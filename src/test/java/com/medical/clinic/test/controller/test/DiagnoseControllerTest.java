@@ -1,15 +1,10 @@
 package com.medical.clinic.test.controller.test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.medical.clinic.dto.AppointmentDTO;
 import com.medical.clinic.dto.DiagnoseDTO;
-import com.medical.clinic.entity.AppointmentEntity;
 import com.medical.clinic.entity.DiagnoseEntity;
-import com.medical.clinic.filter.AppointmentFilter;
 import com.medical.clinic.filter.DiagnoseFilter;
-import com.medical.clinic.repository.AppointmentRepository;
 import com.medical.clinic.repository.DiagnoseRepository;
-import com.medical.clinic.service.AppointmentService;
 import com.medical.clinic.service.DiagnoseService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,10 +68,9 @@ public class DiagnoseControllerTest {
     void test_add_diagnose() throws Exception {
         var diagnoseDTO = new DiagnoseDTO();
         diagnoseDTO.setDiagnosisId(1234);
-        // Mock the service method
+
         when(diagnoseService.addDiagnose(any(DiagnoseDTO.class))).thenReturn(diagnoseDTO);
 
-        // Perform the POST request
         mockMvc.perform(post("/api/v1/diagnoses")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(asJsonString(diagnoseDTO)))

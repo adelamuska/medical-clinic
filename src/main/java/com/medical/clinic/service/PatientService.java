@@ -34,7 +34,6 @@ public class PatientService {
 
     public PatientDTO addPatient(PatientDTO patientDTO) {
         var entity = PATIENT_MAPPER.toEntity(patientDTO);
-
         return PATIENT_MAPPER.toDto(patientRepository.save(entity));
     }
 
@@ -48,7 +47,6 @@ public class PatientService {
                 .orElseThrow(()-> new ClassicModelException("Patient with id "+patientDTO.getPatientId()+" you are trying to update does not exist"));
 
 
-//         entity = patientMapper.toEntity(patientDTO);
        var patientToUpdate = patientMapper.toEntity(patientDTO);
 
         if(patientToUpdate.getPrescriptions().isEmpty()){

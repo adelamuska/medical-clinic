@@ -1,15 +1,10 @@
 package com.medical.clinic.test.controller.test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.medical.clinic.dto.PatientDTO;
 import com.medical.clinic.dto.UserDTO;
-import com.medical.clinic.entity.PatientEntity;
 import com.medical.clinic.entity.UserEntity;
-import com.medical.clinic.filter.PatientFilter;
 import com.medical.clinic.filter.UserFilter;
-import com.medical.clinic.repository.PatientRepository;
 import com.medical.clinic.repository.UserRepository;
-import com.medical.clinic.service.PatientService;
 import com.medical.clinic.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +18,6 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.LocalDate;
 import java.util.Collections;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -74,10 +68,9 @@ public class UserControllerTest {
     void test_add_user() throws Exception {
         var userDTO = new UserDTO();
         userDTO.setUserId(1234);
-        // Mock the service method
+
         when(userService.addUser(any(UserDTO.class))).thenReturn(userDTO);
 
-        // Perform the POST request
         mockMvc.perform(post("/api/v1/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(asJsonString(userDTO)))

@@ -67,10 +67,9 @@ public class AppointmentControllerTest {
     void test_add_appointment() throws Exception {
         var appointmentDTO = new AppointmentDTO();
         appointmentDTO.setAppointmentId(1234);
-        // Mock the service method
+
         when(appointmentService.addAppointment(any(AppointmentDTO.class))).thenReturn(appointmentDTO);
 
-        // Perform the POST request
         mockMvc.perform(post("/api/v1/appointments")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(asJsonString(appointmentDTO)))
