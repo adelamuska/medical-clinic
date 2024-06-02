@@ -31,12 +31,12 @@ public class UserEntity implements UserDetails {
     @Size(max = 15, message = "{validation.entity.user.usernameSize}")
     private String username;
     @NotNull(message = "{validation.entity.user.password}")
-    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$", message = "{validation.entity.user.passwordPattern}")
+    //@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$", message = "{validation.entity.user.passwordPattern}")
     private String password;
-//    @NotNull(message = "{validation.entity.user.role}")
-//    @Pattern(regexp = "patient|doctor", message = "{validation.entity.user.invalid}")
-//    //role ndoshta e heq
-//    private String role;
+    @NotNull(message = "{validation.entity.user.role}")
+    @Pattern(regexp = "patient|doctor", message = "{validation.entity.user.invalid}")
+    //role ndoshta e heq
+    private String role;
     @NotNull(message = "{validation.entity.user.email}")
     private String email;
     @Column(name="contact_number")

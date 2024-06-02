@@ -35,34 +35,6 @@ public class PatientService {
     public PatientDTO addPatient(PatientDTO patientDTO) {
         var entity = PATIENT_MAPPER.toEntity(patientDTO);
 
-        List<AppointmentDTO> appointmentDTOS = patientDTO.getAppointmentsDTO();
-        if(!appointmentDTOS.isEmpty()){
-                patientDTO.setAppointmentsDTO(appointmentDTOS);
-        }else {
-            throw new ClassicModelException("Appointment not found");
-        }
-
-        List<PrescriptionDTO> prescriptionDTOS = patientDTO.getPrescriptionsDTO();
-        if(!prescriptionDTOS.isEmpty()){
-            patientDTO.setPrescriptionsDTO(prescriptionDTOS);
-        }else {
-            throw new ClassicModelException("Prescription not found");
-        }
-
-        List<DoctorDTO> doctorPatientDTOS = patientDTO.getDoctorPatientDTO();
-        if(!doctorPatientDTOS.isEmpty()){
-            patientDTO.setDoctorPatientDTO(doctorPatientDTOS);
-        }else {
-            throw new ClassicModelException("Doctor not found");
-        }
-
-        List<DiagnoseDTO> diagnosePatientDTOS = patientDTO.getDiagnosePatientDTO();
-        if(!diagnosePatientDTOS.isEmpty()){
-            patientDTO.setDiagnosePatientDTO(diagnosePatientDTOS);
-        }else {
-            throw new ClassicModelException("Diagnose not found");
-        }
-
         return PATIENT_MAPPER.toDto(patientRepository.save(entity));
     }
 

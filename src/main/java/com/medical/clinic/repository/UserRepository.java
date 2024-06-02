@@ -22,6 +22,9 @@ public interface UserRepository extends JpaRepository<UserEntity,Integer>, JpaSp
 //    List<UserEntity> findByContactNumberEndingWith(String contactNumber, Pageable pageable);
 //    List<UserEntity> findByContactNumber(String contactNumber, Pageable pageable);
 //
+
+    boolean existsByUsername(String username);
+    boolean existsByEmail(String email);
     @Modifying
     @Query(value = "UPDATE Users SET deleted=1 WHERE user_Id=:userId",nativeQuery = true)
     void setDeleteTrue(Integer userId);

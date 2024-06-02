@@ -33,12 +33,12 @@ public class UserService {
         var entity = USER_MAPPER.toEntity(userDTO);
 
 
-        List<RoleDTO> userRoleDTOS = userDTO.getUserRolesDTO();
-        if(!userRoleDTOS.isEmpty()){
-            userDTO.setUserRolesDTO(userRoleDTOS);
-        }else {
-            throw new ClassicModelException("Role not found");
-        }
+//        List<RoleDTO> userRoleDTOS = userDTO.getUserRolesDTO();
+//        if(!userRoleDTOS.isEmpty()){
+//            userDTO.setUserRolesDTO(userRoleDTOS);
+//        }else {
+//            throw new ClassicModelException("Role not found");
+//        }
         return USER_MAPPER.toDto(userRepository.save(entity));
     }
 
