@@ -1,4 +1,4 @@
-package com.medical.clinic.configuration;//package com.medical.clinic.configuration;
+//package com.medical.clinic.configuration;
 //
 //import com.medical.clinic.service.UserDetailsServiceImpl;
 //import com.nimbusds.jose.jwk.source.ImmutableSecret;
