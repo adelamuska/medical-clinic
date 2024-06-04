@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class UserAuthenticationProvider {
-    private static final String ID = "id";
+
     private static final String ROLES = "roles";
     private static final String ROLES_DELIMITOR = ",";
     private final AuthenticationService authenticationService;
@@ -48,7 +48,6 @@ public class UserAuthenticationProvider {
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
         return JWT.create()
                 .withIssuer(userDTO.getUsername())
-                //.withClaim(ID, userDTO.getUserId())
                 .withClaim(ROLES, userDTO.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(ROLES_DELIMITOR)))
                 .withIssuedAt(now)
                 .withExpiresAt(validity)
@@ -61,9 +60,6 @@ public class UserAuthenticationProvider {
         DecodedJWT decodedJWT = verifier.verify(token);
 
         UserDTOSecurity userDTO = new UserDTOSecurity();
-        //authenticationService.findByLogin(decodedJWT.getIssuer());
-        // avoided - to avoid possible DB hit if it were a prod application
-        //userDTO.setUserId(Integer.valueOf(decodedJWT.getClaim(ID).toString()));
         userDTO.setUsername(decodedJWT.getIssuer());
         userDTO.setAuthorities(Arrays.asList(decodedJWT.getClaim(ROLES).toString().replaceAll("\"", "").split(ROLES_DELIMITOR)));
         userDTO.setToken(token);

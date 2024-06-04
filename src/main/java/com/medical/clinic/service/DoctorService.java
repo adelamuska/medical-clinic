@@ -1,16 +1,10 @@
 package com.medical.clinic.service;
 
-import com.medical.clinic.dto.AppointmentDTO;
-import com.medical.clinic.dto.DiagnoseDTO;
 import com.medical.clinic.dto.DoctorDTO;
-import com.medical.clinic.dto.PrescriptionDTO;
-import com.medical.clinic.entity.AppointmentEntity;
 import com.medical.clinic.entity.DoctorEntity;
 import com.medical.clinic.exception.ClassicModelException;
 import com.medical.clinic.filter.DoctorFilter;
-import com.medical.clinic.mapper.AppointmentMapper;
 import com.medical.clinic.mapper.DoctorMapper;
-import com.medical.clinic.mapper.UserMapper;
 import com.medical.clinic.specification.DoctorSpecification;
 import com.medical.clinic.repository.DoctorRepository;
 import jakarta.transaction.Transactional;
@@ -19,11 +13,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static com.medical.clinic.mapper.AppointmentMapper.APPOINTMENT_MAPPER;
 import static com.medical.clinic.mapper.DoctorMapper.DOCTOR_MAPPER;
 @Service
 @Transactional
@@ -35,7 +24,6 @@ public class DoctorService {
     @Autowired
     DoctorMapper doctorMapper;
     public Page<DoctorEntity> getAllDoctors(DoctorFilter filter, Pageable pageable){
-
         return doctorRepository.findAll(DoctorSpecification.filters(filter),pageable);
     }
 

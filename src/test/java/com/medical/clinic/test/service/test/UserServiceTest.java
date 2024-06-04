@@ -73,7 +73,6 @@ public class UserServiceTest {
         userDTO.setUserId(1234);
         userDTO.setPatientsDTO(new ArrayList<>());
         userDTO.setDoctorsDTO(new ArrayList<>());
-        userDTO.setUserRolesDTO(new ArrayList<>());
 
         var userEntity = new UserEntity();
         userEntity.setUserId(1234);
@@ -107,7 +106,6 @@ public class UserServiceTest {
         userDTO.setUserId(1234);
         userDTO.setPatientsDTO(new ArrayList<>());
         userDTO.setDoctorsDTO(new ArrayList<>());
-        userDTO.setUserRolesDTO(new ArrayList<>());
 
 
         var userEntity = new UserEntity();

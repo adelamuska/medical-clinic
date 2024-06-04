@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-import java.util.ArrayList;
 import java.util.List;
 @Data
 @AllArgsConstructor
@@ -21,7 +20,5 @@ public class DoctorDTO {
     private List<DiagnoseDTO> diagnosesDTO;
     private List<PrescriptionDTO> prescriptionsDTO;
     private List<AppointmentDTO> appointmentsDTO;
-    //private UserDTO usersDTO;
-    //private List<PatientDTO> patientDoctorDTO;
 
 }

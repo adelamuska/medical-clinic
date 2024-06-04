@@ -14,7 +14,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static com.medical.clinic.mapper.UserMapper.USER_MAPPER;
 @Service
@@ -31,14 +30,6 @@ public class UserService {
 
     public UserDTO addUser(UserDTO userDTO) {
         var entity = USER_MAPPER.toEntity(userDTO);
-
-
-//        List<RoleDTO> userRoleDTOS = userDTO.getUserRolesDTO();
-//        if(!userRoleDTOS.isEmpty()){
-//            userDTO.setUserRolesDTO(userRoleDTOS);
-//        }else {
-//            throw new ClassicModelException("Role not found");
-//        }
         return USER_MAPPER.toDto(userRepository.save(entity));
     }
 
@@ -54,16 +45,12 @@ public class UserService {
         var userToUpdate = userMapper.toEntity(userDTO);
         userToUpdate.setPatients(new ArrayList<>());
         userToUpdate.setDoctors(new ArrayList<>());
-        userToUpdate.setUserRoles(new ArrayList<>());
 
         if(userToUpdate.getPatients().isEmpty()){
             userToUpdate.setPatients(entity.getPatients());
         }
-        if(userToUpdate.getDoctors().isEmpty()){//bje i n dryshem nga null
+        if(userToUpdate.getDoctors().isEmpty()){
             userToUpdate.setDoctors(entity.getDoctors());
-        }
-        if(userToUpdate.getUserRoles().isEmpty()){
-            userToUpdate.setUserRoles(entity.getUserRoles());
         }
         return USER_MAPPER.toDto(userRepository.save(userToUpdate));
     }

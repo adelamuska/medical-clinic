@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import static com.medical.clinic.mapper.PrescriptionMapper.PRESCRIPTION_MAPPER;
 @Service
+@Transactional
 public class PrescriptionService {
 
     @Autowired
@@ -38,13 +39,6 @@ public class PrescriptionService {
         entity = PRESCRIPTION_MAPPER.toEntity(prescriptionDTO);
         return PRESCRIPTION_MAPPER.toDto(prescriptionRepository.save(entity));
     }
-
-    @Transactional
-//    public void deleteById(Integer prescriptionId){
-//        var prescriptionFound = prescriptionRepository.findById(prescriptionId)
-//                .orElseThrow(() -> new ClassicModelException("Prescription with id " + prescriptionId + " does not exist"));
-//        prescriptionRepository.delete(prescriptionFound);
-//    }
 
     public void deleteById(Integer prescriptionId) {
         prescriptionRepository.findById(prescriptionId)

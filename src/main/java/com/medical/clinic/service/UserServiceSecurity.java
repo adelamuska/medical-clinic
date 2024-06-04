@@ -1,6 +1,5 @@
 package com.medical.clinic.service;
 
-import com.medical.clinic.dto.UserDTO;
 import com.medical.clinic.dto.SignUpDTO;
 import com.medical.clinic.dto.UserDTOSecurity;
 import com.medical.clinic.exception.ClassicModelException;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 import com.medical.clinic.entity.UserEntity;
 
 import java.nio.CharBuffer;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -35,12 +33,6 @@ public class UserServiceSecurity implements UserDetailsService {
     }
 
     public UserDTOSecurity signUp(SignUpDTO signUpDTO) {
-        // TODO vendos logjiken e login per ta
-        //  bere signup nga databaza userin
-        // TODO dmth do besh save-t dhe validimet e nevojshme
-       // TODO mos harro te besh dhe encode te password
-        //         si kjo ketu
-         //String encodedMasterPassword =passwordEncoder.encode(CharBuffer.wrap(signUpDTO.getPassword()));
         if (userRepository.existsByUsername(signUpDTO.getUsername())) {
             throw new ClassicModelException("Username is already taken.");
         }
@@ -59,8 +51,6 @@ public class UserServiceSecurity implements UserDetailsService {
         user.setRole(signUpDTO.getRole());
 
         userRepository.save(user);
-        // vec se ne vend te 'the-password' do jete passwordi
-        // qe vjen prej signUpDTO
         return new UserDTOSecurity(signUpDTO.getUsername(), signUpDTO.getEmail(),signUpDTO.getContactNumber() ,signUpDTO.getPassword(), "token", List.of(signUpDTO.getRole()));
     }
 

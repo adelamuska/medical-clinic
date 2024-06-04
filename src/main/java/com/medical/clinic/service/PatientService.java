@@ -13,11 +13,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.medical.clinic.mapper.PatientMapper.PATIENT_MAPPER;
 @Service
+@Transactional
 public class PatientService {
 
     @Autowired
@@ -28,7 +27,6 @@ public class PatientService {
 
 
     public Page<PatientEntity> getAllPatients(PatientFilter filter,Pageable pageable){
-
         return patientRepository.findAll(PatientSpecification.filters(filter),pageable);
     }
 
@@ -64,12 +62,6 @@ public class PatientService {
 
         return PATIENT_MAPPER.toDto(patientRepository.save(patientToUpdate));
     }
-    @Transactional
-//    public void deleteById(Integer patientId){
-//        var patientFound = patientRepository.findById(patientId)
-//                .orElseThrow(() -> new ClassicModelException("Patient with id " + patientId + " does not exist"));
-//        patientRepository.delete(patientFound);
-//    }
 
     public void deleteById(Integer patientId) {
         patientRepository.findById(patientId)

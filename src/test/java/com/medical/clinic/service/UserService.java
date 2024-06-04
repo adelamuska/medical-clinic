@@ -53,7 +53,6 @@ public class UserService {
         var userToUpdate = userMapper.toEntity(userDTO);
         userToUpdate.setPatients(new ArrayList<>());
         userToUpdate.setDoctors(new ArrayList<>());
-        userToUpdate.setUserRoles(new ArrayList<>());
 
         if(userToUpdate.getPatients().isEmpty()){
             userToUpdate.setPatients(entity.getPatients());
@@ -61,9 +60,7 @@ public class UserService {
         if(userToUpdate.getDoctors().isEmpty()){//bje i n dryshem nga null
             userToUpdate.setDoctors(entity.getDoctors());
         }
-        if(userToUpdate.getUserRoles().isEmpty()){
-            userToUpdate.setUserRoles(entity.getUserRoles());
-        }
+
         return USER_MAPPER.toDto(userRepository.save(userToUpdate));
     }
 

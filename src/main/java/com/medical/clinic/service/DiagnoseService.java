@@ -43,12 +43,6 @@ public class DiagnoseService {
     }
 
 
-//    public void deleteById(Integer diagnoseId){
-//        var diagnoseFound = diagnoseRepository.findById(diagnoseId)
-//                .orElseThrow(() -> new ClassicModelException("Diagnose with id " + diagnoseId + " does not exist"));
-//        diagnoseRepository.delete(diagnoseFound);
-//    }
-
     public void deleteById(Integer diagnoseId) {
         diagnoseRepository.findById(diagnoseId)
                 .orElseThrow(() -> new ClassicModelException("Diagnose with id " + diagnoseId + " does not exist"));

@@ -23,6 +23,9 @@ public class UserSpecification {
             if(filter.getEmail() !=null && !filter.getEmail().isEmpty()){
                 predicates =cb.and(predicates,cb.like(root.get("email"),"%" +filter.getEmail()+ "%"));
             }
+            if(filter.getRole() !=null && !filter.getRole().isEmpty()){
+                predicates =cb.and(predicates,cb.like(root.get("role"),"%" +filter.getEmail()+ "%"));
+            }
             if(filter.getContactNumber() !=null && !filter.getContactNumber().isEmpty()){
                 predicates =cb.and(predicates,cb.like(root.get("contactNumber"),"%" +filter.getContactNumber()+ "%"));
             }
@@ -30,7 +33,7 @@ public class UserSpecification {
 
 
             if (filter.getSortBy() != null && !filter.getSortBy().isEmpty()) {
-                List<String> validSortAttributes = Arrays.asList("username", "password", "email", "contactNumber");
+                List<String> validSortAttributes = Arrays.asList("username", "password", "email", "contactNumber", "role");
                 if (validSortAttributes.contains(filter.getSortBy())) {
                     if (filter.getOrder() != null && !filter.getOrder().isEmpty()) {
                         if (filter.getOrder().equalsIgnoreCase("ASC")) {

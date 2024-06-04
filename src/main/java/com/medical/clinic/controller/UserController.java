@@ -12,8 +12,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-
 import static com.medical.clinic.mapper.UserMapper.*;
 
 @RestController

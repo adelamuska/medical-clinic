@@ -31,7 +31,6 @@ public class PatientSpecification {
             }
 
 
-            ;
             if (filter.getSortBy() != null && !filter.getSortBy().isEmpty()) {
                 List<String> validSortAttributes = Arrays.asList("firstName", "lastName", "birthDate", "gender", "address");
                 if (validSortAttributes.contains(filter.getSortBy())) {

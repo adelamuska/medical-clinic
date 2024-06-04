@@ -27,10 +27,6 @@ public class AuthenticationService {
     }
 
     public UserDTOSecurity authenticate(CredentialsDTO credentialsDto) {
-        // TODO Do kerkosh per userin by username
-        // TODO ne databaze dhe me metoden passwordEncoder.matches
-        // TODO do shofesh nqs psw qe ka sjelle useri ne CredentialsDTO
-        // TODO eshte valid apo jo
         UserEntity user = userRepository.findByUsername(credentialsDto.getUsername())
                 .orElseThrow(() -> new ClassicModelException("Invalid username"));
 
@@ -45,19 +41,8 @@ public class AuthenticationService {
 
     public UserDTOSecurity findByUsername(String username) {
 
-        // TODO vendos logjiken e login per ta marre nga databaza userin
-        // SI ? Bej autowire service-in e userit
-
         UserEntity user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new ClassicModelException("Invalid username"));
         return new UserDTOSecurity(user.getUsername(), user.getPassword(), user.getEmail(), user.getContactNumber(), "token", Collections.EMPTY_LIST);
-
-//        if (username.equals(username)) {
-//            return new UserDTOSecurity( "jsmith", "password456", "jsmith@example.com","123-456-7891", "token", List.of("ROLE_VIEWER", "ROLE_EDITOR"));
-//        }
-//        if ("john".equals(username)) {
-//            return new UserDTOSecurity( "jdoe", "password123", "jsmith@example.com","123-456-7891", "token", List.of("ROLE_VIEWER"));
-//        }
-   //     throw new RuntimeException("Invalid login");
     }
 }
