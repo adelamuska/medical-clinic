@@ -132,7 +132,7 @@ public class PatientServiceTest {
         PatientEntity existingPatient = new PatientEntity();
         existingPatient.setPatientId(patientId);
 
-        when(patientRepository.findById(patientId)).thenReturn(java.util.Optional.of(existingPatient));
+        when(patientRepository.findById(patientId)).thenReturn(Optional.of(existingPatient));
 
 
         patientService.deleteById(patientId);

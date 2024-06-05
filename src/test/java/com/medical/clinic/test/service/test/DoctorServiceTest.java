@@ -53,14 +53,14 @@ public class DoctorServiceTest {
         doctorEntities.add(new DoctorEntity());
         doctorEntities.add(new DoctorEntity());
 
-        Page<DoctorEntity> dentistPage = new PageImpl<>(doctorEntities);
+        Page<DoctorEntity> doctorPage = new PageImpl<>(doctorEntities);
 
         when(doctorRepository.findAll(any(Specification.class), any(Pageable.class)))
-                .thenReturn(dentistPage);
+                .thenReturn(doctorPage);
 
         Page<DoctorEntity> result = doctorService.getAllDoctors(filter, pageable);
 
-        assertEquals(dentistPage, result);
+        assertEquals(doctorPage, result);
     }
 
 
@@ -130,7 +130,7 @@ public class DoctorServiceTest {
         DoctorEntity existingDoctor = new DoctorEntity();
         existingDoctor.setDoctorId(doctorId);
 
-        when(doctorRepository.findById(doctorId)).thenReturn(java.util.Optional.of(existingDoctor));
+        when(doctorRepository.findById(doctorId)).thenReturn(Optional.of(existingDoctor));
 
         doctorService.deleteById(doctorId);
     }

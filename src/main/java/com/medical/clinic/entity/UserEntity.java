@@ -1,6 +1,7 @@
 package com.medical.clinic.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -36,6 +37,7 @@ public class UserEntity {
     @Column(name="contact_number")
     @Size(min = 10,max = 13, message = "{validation.entity.user.contactNumber}")
     private String contactNumber;
+
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PatientEntity> patients = new ArrayList<>();

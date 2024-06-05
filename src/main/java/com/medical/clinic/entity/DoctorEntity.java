@@ -1,6 +1,7 @@
 package com.medical.clinic.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -32,16 +33,18 @@ public class DoctorEntity {
     @NotNull(message = "{validation.entity.doctors.specialization}")
     private String specialization;
 
+
     @OneToMany(mappedBy = "doctors",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DiagnoseEntity> diagnoses = new ArrayList<>();
 
     @OneToMany(mappedBy = "doctors",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PrescriptionEntity> prescriptions = new ArrayList<>();
 
+    @NotEmpty(message = "validation.entity.doctors.appointment")
     @OneToMany(mappedBy = "doctors",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AppointmentEntity> appointments = new ArrayList<>();
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name= "user_Id", referencedColumnName = "user_Id")
     private UserEntity users;
 

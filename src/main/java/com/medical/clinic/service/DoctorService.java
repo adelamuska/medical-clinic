@@ -41,7 +41,6 @@ public class DoctorService {
         var entity = doctorRepository.findById(doctorDTO.getDoctorId())
                 .orElseThrow(() -> new ClassicModelException("Doctor with id " + doctorDTO.getDoctorId() + " you are trying to update does not exist"));
 
-         entity = doctorMapper.toEntity(doctorDTO);
         var doctorToUpdate = doctorMapper.toEntity(doctorDTO);
 
         if (doctorToUpdate.getDiagnoses().isEmpty()) {

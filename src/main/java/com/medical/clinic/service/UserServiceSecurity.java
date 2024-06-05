@@ -45,13 +45,13 @@ public class UserServiceSecurity implements UserDetailsService {
 
         UserEntity user = new UserEntity();
         user.setUsername(signUpDTO.getUsername());
-        user.setPassword(encodedPassword);
         user.setEmail(signUpDTO.getEmail());
         user.setContactNumber(signUpDTO.getContactNumber());
+        user.setPassword(encodedPassword);
         user.setRole(signUpDTO.getRole());
 
         userRepository.save(user);
-        return new UserDTOSecurity(signUpDTO.getUsername(), signUpDTO.getEmail(),signUpDTO.getContactNumber() ,signUpDTO.getPassword(), "token", List.of(signUpDTO.getRole()));
+        return new UserDTOSecurity(signUpDTO.getUsername(), signUpDTO.getEmail(),signUpDTO.getContactNumber() , "token", List.of(signUpDTO.getRole()));
     }
 
     @Override

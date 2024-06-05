@@ -8,11 +8,11 @@ import com.medical.clinic.dto.CredentialsDTO;
 import com.medical.clinic.dto.UserDTOSecurity;
 import com.medical.clinic.service.AuthenticationService;
 import jakarta.annotation.PostConstruct;
-import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.stereotype.Component;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.util.Arrays;

@@ -33,7 +33,7 @@ public class AuthenticationService {
         String encodedPasswordFromDatabase = user.getPassword();
 
         if (passwordEncoder.matches(CharBuffer.wrap(credentialsDto.getPassword()), encodedPasswordFromDatabase)) {
-            return new UserDTOSecurity(user.getUsername(), user.getPassword(), user.getEmail(), user.getContactNumber(), "token", List.of(user.getRole()));
+            return new UserDTOSecurity(user.getUsername(), user.getEmail(), user.getContactNumber(), "token", List.of(user.getRole()));
         } else {
             throw new ClassicModelException("Invalid password");
         }
@@ -43,6 +43,6 @@ public class AuthenticationService {
 
         UserEntity user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new ClassicModelException("Invalid username"));
-        return new UserDTOSecurity(user.getUsername(), user.getPassword(), user.getEmail(), user.getContactNumber(), "token", Collections.EMPTY_LIST);
+        return new UserDTOSecurity(user.getUsername(), user.getEmail(), user.getContactNumber(), "token", List.of(user.getRole()));
     }
 }

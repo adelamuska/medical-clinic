@@ -119,7 +119,7 @@ public class PrescriptionServiceTest {
         PrescriptionEntity existingPrescription = new PrescriptionEntity();
         existingPrescription.setPrescriptionId(prescriptionId);
 
-        when(prescriptionRepository.findById(prescriptionId)).thenReturn(java.util.Optional.of(existingPrescription));
+        when(prescriptionRepository.findById(prescriptionId)).thenReturn(Optional.of(existingPrescription));
 
         prescriptionService.deleteById(prescriptionId);
     }

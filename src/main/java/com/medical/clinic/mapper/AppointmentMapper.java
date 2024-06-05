@@ -13,9 +13,4 @@ public abstract class AppointmentMapper implements BaseMapper<AppointmentEntity,
 
 
 
-    public abstract AppointmentDTO toDto(AppointmentEntity appointmentEntity);
-
-
-    public abstract AppointmentEntity toEntity(AppointmentDTO appointmentDTO);
-
 }

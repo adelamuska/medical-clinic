@@ -129,7 +129,7 @@ public class UserServiceTest {
         UserEntity existingUser = new UserEntity();
         existingUser.setUserId(userId);
 
-        when(userRepository.findById(userId)).thenReturn(java.util.Optional.of(existingUser));
+        when(userRepository.findById(userId)).thenReturn(Optional.of(existingUser));
 
         userService.deleteById(userId);
     }
