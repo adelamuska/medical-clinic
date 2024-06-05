@@ -1,6 +1,7 @@
 package com.medical.clinic.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -43,6 +44,7 @@ public class PatientEntity {
     @OneToMany(mappedBy = "patients",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PrescriptionEntity> prescriptions = new ArrayList<>();
 
+    @NotEmpty(message = "validation.entity.patients.appointment")
     @OneToMany(mappedBy = "patients",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AppointmentEntity> appointments = new ArrayList<>();
 

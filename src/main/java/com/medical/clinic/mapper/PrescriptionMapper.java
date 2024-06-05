@@ -8,8 +8,5 @@ import org.mapstruct.factory.Mappers;
 public abstract class PrescriptionMapper implements BaseMapper<PrescriptionEntity, PrescriptionDTO> {
 
     public static PrescriptionMapper PRESCRIPTION_MAPPER= Mappers.getMapper(PrescriptionMapper.class);
-    public abstract PrescriptionDTO toDto(PrescriptionEntity entity);
-
-    public abstract PrescriptionEntity toEntity(PrescriptionDTO dto);
 
 }

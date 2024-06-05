@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import static com.medical.clinic.mapper.AppointmentMapper.APPOINTMENT_MAPPER;
 
 @Service
+@Transactional
 public class AppointmentService {
 
 
@@ -43,12 +44,6 @@ public class AppointmentService {
         return APPOINTMENT_MAPPER.toDto(appointmentRepository.save(entity));
     }
 
-    @Transactional
-//    public void deleteById(Integer appointmentId){
-//        var appointmentFound = appointmentRepository.findById(appointmentId)
-//                .orElseThrow(() -> new ClassicModelException("Appointment with id " + appointmentId + " does not exist"));
-//        appointmentRepository.delete(appointmentFound);
-//    }
 
     public void deleteById(Integer appointmentId){
         appointmentRepository.findById(appointmentId)

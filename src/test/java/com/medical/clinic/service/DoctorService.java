@@ -29,6 +29,9 @@ public class DoctorService {
     }
 
     public DoctorDTO addDoctor(DoctorDTO doctorDTO) {
+        if (doctorDTO.getDiagnosesDTO() == null || doctorDTO.getDiagnosesDTO().isEmpty()) {
+            throw new IllegalArgumentException("Diagnoses list must not be empty");
+        }
         var entity = DOCTOR_MAPPER.toEntity(doctorDTO);
         return DOCTOR_MAPPER.toDto(doctorRepository.save(entity));
     }

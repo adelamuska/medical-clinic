@@ -123,7 +123,7 @@ public class DiagnoseServiceTest {
         DiagnoseEntity existingDiagnose = new DiagnoseEntity();
         existingDiagnose.setDiagnosisId(existingDiagnoseId);
 
-        when(diagnoseRepository.findById(existingDiagnoseId)).thenReturn(java.util.Optional.of(existingDiagnose));
+        when(diagnoseRepository.findById(existingDiagnoseId)).thenReturn(Optional.of(existingDiagnose));
 
         diagnoseService.deleteById(existingDiagnoseId);
 

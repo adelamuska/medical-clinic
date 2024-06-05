@@ -12,8 +12,6 @@ public abstract class DiagnoseMapper implements BaseMapper<DiagnoseEntity, Diagn
 
     public static DiagnoseMapper DIAGNOSE_MAPPER= Mappers.getMapper(DiagnoseMapper.class);
 
-    public abstract DiagnoseDTO toDto(DiagnoseEntity diagnoseEntity);
 
-    public abstract DiagnoseEntity toEntity(DiagnoseDTO diagnoseDTO);
 
 }

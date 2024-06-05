@@ -43,6 +43,6 @@ public class AuthenticationService {
 
         UserEntity user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new ClassicModelException("Invalid username"));
-        return new UserDTOSecurity(user.getUsername(), user.getPassword(), user.getEmail(), user.getContactNumber(), "token", Collections.EMPTY_LIST);
+        return new UserDTOSecurity(user.getUsername(), user.getPassword(), user.getEmail(), user.getContactNumber(), "token", List.of(user.getRole()));
     }
 }

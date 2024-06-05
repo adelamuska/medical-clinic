@@ -115,7 +115,7 @@ public class AppointmentServiceTest {
         AppointmentEntity existingAppointment = new AppointmentEntity();
         existingAppointment.setAppointmentId(appointmentId);
 
-        when(appointmentRepository.findById(appointmentId)).thenReturn(java.util.Optional.of(existingAppointment));
+        when(appointmentRepository.findById(appointmentId)).thenReturn(Optional.of(existingAppointment));
 
         appointmentService.deleteById(appointmentId);
     }

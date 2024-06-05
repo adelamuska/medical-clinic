@@ -40,7 +40,7 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(requests -> {
             requests.requestMatchers(HttpMethod.POST, LOGIN.getValue(), SIGN_UP.getValue()).permitAll()
-              //      .requestMatchers("/v1/hello/john").hasAnyAuthority("ROLE_EDITOR")
+                   .requestMatchers("/api/v1/auth/log-in").hasAnyAuthority("ROLE_DOCTOR","ROLE_PATIENT")
                     .anyRequest().authenticated();
         });
         return http.build();
